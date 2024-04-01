@@ -2,6 +2,7 @@ import React, { useState, useEffect, useMemo } from "react";
 import Navbar from "../components/Navbar";
 import Card from "../components/Card";
 import fetchMaps from "../api/fetchMaps";
+import Filter from "../components/Filter";
 
 const MapsPage = () => {
   const [data, setData] = useState([]);
@@ -19,6 +20,7 @@ const MapsPage = () => {
   return memoizedMaps ? (
     <>
       <Navbar />
+      <Filter data={memoizedMaps} />
       <Card data={memoizedMaps} />
     </>
   ) : (

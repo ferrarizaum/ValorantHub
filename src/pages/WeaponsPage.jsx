@@ -2,6 +2,7 @@ import React, { useState, useEffect, useMemo } from "react";
 import Navbar from "../components/Navbar";
 import Card from "../components/Card";
 import fetchWeapons from "../api/fetchWeapons";
+import Filter from "../components/Filter";
 
 const WeaponsPage = () => {
   const [data, setData] = useState([]);
@@ -19,6 +20,7 @@ const WeaponsPage = () => {
   return memoizedWeapons ? (
     <>
       <Navbar />
+      <Filter data={memoizedWeapons} />
       <Card data={memoizedWeapons} />
     </>
   ) : (

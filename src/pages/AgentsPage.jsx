@@ -6,6 +6,7 @@ import fetchAgents from "../api/fetchAgents";
 
 const AgentsPage = () => {
   const [data, setData] = useState([]);
+  const [filter, setFilter] = useState("");
   useEffect(() => {
     const fetchData = async () => {
       const data = await fetchAgents();
@@ -15,16 +16,18 @@ const AgentsPage = () => {
     fetchData();
   }, []);
 
-  const memoizedAgents = useMemo(() => data, [data]);
+  const filteredData = useMemo(() => {
+    return data.filter((item) =>
+      item.displayName.toLowerCase().includes(filter.toLowerCase())
+    );
+  }, [data, filter]);
 
-  return memoizedAgents ? (
+  return (
     <>
       <Navbar />
-      <Filter data={memoizedAgents} />
-      <Card data={memoizedAgents} />
+      <Filter filter={filter} setFilter={setFilter} />
+      <Card data={filteredData} />
     </>
-  ) : (
-    <p>Loading...</p>
   );
 };
 

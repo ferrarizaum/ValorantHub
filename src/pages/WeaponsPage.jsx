@@ -6,6 +6,8 @@ import Filter from "../components/Filter";
 
 const WeaponsPage = () => {
   const [data, setData] = useState([]);
+  const [filter, setFilter] = useState("");
+
   useEffect(() => {
     const fetchData = async () => {
       const data = await fetchWeapons();
@@ -15,16 +17,18 @@ const WeaponsPage = () => {
     fetchData();
   }, []);
 
-  const memoizedWeapons = useMemo(() => data, [data]);
+  const filteredData = useMemo(() => {
+    return data.filter((item) =>
+      item.displayName.toLowerCase().includes(filter.toLowerCase())
+    );
+  }, [data, filter]);
 
-  return memoizedWeapons ? (
+  return (
     <>
       <Navbar />
-      <Filter data={memoizedWeapons} />
-      <Card data={memoizedWeapons} />
+      <Filter filter={filter} setFilter={setFilter} />
+      <Card data={filteredData} />
     </>
-  ) : (
-    <p>Loading...</p>
   );
 };
 

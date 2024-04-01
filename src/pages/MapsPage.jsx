@@ -6,6 +6,8 @@ import Filter from "../components/Filter";
 
 const MapsPage = () => {
   const [data, setData] = useState([]);
+  const [filter, setFilter] = useState("");
+
   useEffect(() => {
     const fetchData = async () => {
       const data = await fetchMaps();
@@ -15,16 +17,18 @@ const MapsPage = () => {
     fetchData();
   }, []);
 
-  const memoizedMaps = useMemo(() => data, [data]);
+  const filteredData = useMemo(() => {
+    return data.filter((item) =>
+      item.displayName.toLowerCase().includes(filter.toLowerCase())
+    );
+  }, [data, filter]);
 
-  return memoizedMaps ? (
+  return (
     <>
       <Navbar />
-      <Filter data={memoizedMaps} />
-      <Card data={memoizedMaps} />
+      <Filter filter={filter} setFilter={setFilter} />
+      <Card data={filteredData} />
     </>
-  ) : (
-    <p>Loading...</p>
   );
 };
 

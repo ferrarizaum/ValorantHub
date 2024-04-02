@@ -17,11 +17,13 @@ const Card = ({ data }) => {
                 backgroundColor: "lightGray",
                 padding: "1px",
                 borderRadius: "5px",
-                maxHeight: "800px",
-                maxWidth: "800px",
               }}
             >
-              <img alt="feature" src={e.displayIcon} />
+              <img
+                style={{ maxHeight: "250px", maxWidth: "180px" }}
+                alt="feature"
+                src={e.displayIcon}
+              />
             </div>
             <div>
               <h1>{e.displayName}</h1>

@@ -51,11 +51,6 @@ const Navbar = () => {
                 Weapons
               </button>
             </li>
-            <li>
-              <button style={buttonStyle} onClick={() => navigate("/maps")}>
-                Maps
-              </button>
-            </li>
           </ul>
         </nav>
       </div>

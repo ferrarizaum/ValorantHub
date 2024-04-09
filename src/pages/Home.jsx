@@ -5,7 +5,9 @@ const Home = () => {
   return (
     <>
       <Navbar />
-      <h1>Welcome to ValorantHub</h1>
+      <div style={{ display: "flex", justifyContent: "center" }}>
+        <h1>Welcome to ValorantHub</h1>
+      </div>
     </>
   );
 };

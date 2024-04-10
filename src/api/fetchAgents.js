@@ -1,12 +1,3 @@
-/*
-https://valorant-api.com/v1/agents/
-https://valorant-api.com/v1/maps/
-https://valorant-api.com/v1/weapons
-https://valorant-api.com/v1/weapons/skins
-
-p
-*/
-
 const fetchAgents = async () => {
   try {
     const response = await fetch(

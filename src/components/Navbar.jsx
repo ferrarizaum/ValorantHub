@@ -19,7 +19,7 @@ const Navbar = () => {
   const navigate = useNavigate();
   return (
     <>
-      <div style={{ backgroundColor: "#333333" }}>
+      <div style={{ backgroundColor: "#333333", borderRadius: "10px" }}>
         <nav
           style={{
             alignItems: "center",

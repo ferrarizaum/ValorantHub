@@ -21,6 +21,7 @@ const AgentsPage = () => {
       item.displayName.toLowerCase().includes(filter.toLowerCase())
     );
   }, [data, filter]);
+  //add details card
 
   return (
     <>

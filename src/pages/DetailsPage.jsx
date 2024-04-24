@@ -1,33 +1,26 @@
-import React, { useState, useEffect, useMemo } from "react";
+import React, { useState, useEffect } from "react";
 import Navbar from "../components/Navbar";
-import Card from "../components/Card";
-import fetchWeapons from "../api/fetchWeapons";
-import Filter from "../components/Filter";
+import fetchDetails from "../api/fetchDetails";
+import { useParams } from "react-router-dom";
+import DetailsCard from "../components/DetailsCard";
 
 const DetailsPage = () => {
   const [data, setData] = useState([]);
-  const [filter, setFilter] = useState("");
+  const { uuid } = useParams();
+  const type = "agents";
 
   useEffect(() => {
     const fetchData = async () => {
-      const data = await fetchWeapons();
+      const data = await fetchDetails({ type, uuid });
       setData(data);
     };
-
     fetchData();
-  }, []);
-
-  const filteredData = useMemo(() => {
-    return data.filter((item) =>
-      item.displayName.toLowerCase().includes(filter.toLowerCase())
-    );
-  }, [data, filter]);
+  }, [uuid]);
 
   return (
     <>
       <Navbar />
-      <Filter />
-      <Card />
+      <DetailsCard data={data} />
     </>
   );
 };

@@ -2,19 +2,14 @@ import React from "react";
 
 const DetailsCard = ({ data }) => {
   console.log(data);
-  if (data) {
-    return (
-      <>
-        {data.map((e) => {
-          return <h1>{e.displayName}</h1>;
-        })}
-      </>
-    );
-  }
+
   return (
     <>
       <div>
-        <h1>Loading</h1>
+        <h1>{data.displayName}</h1>
+      </div>
+      <div>
+        <img src={data.displayIcon} />
       </div>
     </>
   );

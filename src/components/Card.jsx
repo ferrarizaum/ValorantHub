@@ -1,6 +1,8 @@
 import React from "react";
+import { useNavigate } from "react-router-dom";
 
 const Card = ({ data }) => {
+  const navigate = useNavigate();
   return (
     <>
       <div
@@ -11,7 +13,11 @@ const Card = ({ data }) => {
         }}
       >
         {data.map((e) => (
-          <div key={e.uuid} style={{ textAlign: "center", margin: "2em" }}>
+          <div
+            key={e.uuid}
+            style={{ textAlign: "center", margin: "2em" }}
+            onClick={() => navigate("/details/${uuid}")}
+          >
             <div
               style={{
                 backgroundColor: "lightGray",

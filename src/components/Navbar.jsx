@@ -13,6 +13,7 @@ export const buttonStyle = {
   borderRadius: "5px",
   cursor: "pointer",
   transition: "background-color 0.3s",
+  marginRight: "10px",
 };
 
 const Navbar = () => {

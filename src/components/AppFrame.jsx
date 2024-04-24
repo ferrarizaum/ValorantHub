@@ -10,6 +10,8 @@ const AppFrame = ({ children }) => {
         padding: 0,
         borderRadius: "10px",
         overflowY: "auto",
+        fontFamily: "Roboto",
+        fontSize: "Medium",
       }}
     >
       {children}

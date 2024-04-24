@@ -3,7 +3,7 @@ import { useParams } from "react-router-dom";
 
 const DetailsCard = ({ data }) => {
   const { type } = useParams();
-  console.log(type);
+
   if (type === "agents") {
     return (
       <>
@@ -30,7 +30,7 @@ const DetailsCard = ({ data }) => {
           <h1>{data.displayName}</h1>
         </div>
         <div>
-          <h2>{data.category}</h2>
+          <h2>{data?.category?.slice(21)}</h2>
         </div>
       </>
     );

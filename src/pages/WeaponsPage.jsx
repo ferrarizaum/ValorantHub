@@ -3,10 +3,13 @@ import Navbar from "../components/Navbar";
 import Card from "../components/Card";
 import fetchWeapons from "../api/fetchWeapons";
 import Filter from "../components/Filter";
+import { useLocation } from "react-router-dom";
 
 const WeaponsPage = () => {
   const [data, setData] = useState([]);
   const [filter, setFilter] = useState("");
+  const location = useLocation();
+  const type = location.pathname;
 
   useEffect(() => {
     const fetchData = async () => {
@@ -27,7 +30,7 @@ const WeaponsPage = () => {
     <>
       <Navbar />
       <Filter filter={filter} setFilter={setFilter} />
-      <Card data={filteredData} />
+      <Card data={filteredData} type={type} />
     </>
   );
 };

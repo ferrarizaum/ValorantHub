@@ -1,7 +1,7 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
 
-const Card = ({ data }) => {
+const Card = ({ data, type }) => {
   const navigate = useNavigate();
   return (
     <>
@@ -16,7 +16,7 @@ const Card = ({ data }) => {
           <div
             key={e.uuid}
             style={{ textAlign: "center", margin: "2em" }}
-            onClick={() => navigate(`/details/${e.uuid}`)}
+            onClick={() => navigate(`/details${type}/${e.uuid}`)}
           >
             <div
               style={{

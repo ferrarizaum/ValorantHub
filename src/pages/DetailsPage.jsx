@@ -6,16 +6,14 @@ import DetailsCard from "../components/DetailsCard";
 
 const DetailsPage = () => {
   const [data, setData] = useState([]);
-  const { uuid } = useParams();
-  const type = "agents";
-
+  const { type, uuid } = useParams();
   useEffect(() => {
     const fetchData = async () => {
       const data = await fetchDetails({ type, uuid });
       setData(data);
     };
     fetchData();
-  }, [uuid]);
+  }, [uuid, type]);
 
   return (
     <>

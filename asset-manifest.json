@@ -1,10 +1,10 @@
 {
   "files": {
-    "main.js": "/ValorantHub/static/js/main.64984dfd.js",
+    "main.js": "/ValorantHub/static/js/main.b2df0069.js",
     "index.html": "/ValorantHub/index.html",
-    "main.64984dfd.js.map": "/ValorantHub/static/js/main.64984dfd.js.map"
+    "main.b2df0069.js.map": "/ValorantHub/static/js/main.b2df0069.js.map"
   },
   "entrypoints": [
-    "static/js/main.64984dfd.js"
+    "static/js/main.b2df0069.js"
   ]
 }

@@ -14,7 +14,6 @@ const DetailsPage = () => {
     };
     fetchData();
   }, [uuid, type]);
-  //fixes some bugs
   return (
     <>
       <Navbar />

@@ -3,7 +3,6 @@ import { useParams } from "react-router-dom";
 
 const DetailsCard = ({ data }) => {
   const { type } = useParams();
-  console.log(data);
   if (type === "agents") {
     return (
       <>
@@ -18,14 +17,14 @@ const DetailsCard = ({ data }) => {
         </div>
         <div style={{ display: "flex", flexWrap: "wrap" }}>
           {data?.abilities?.map((e) => (
-            <>
+            <div key={e.displayName}>
               <div>
                 <h3>{e.displayName}</h3>
               </div>
               <div>
                 <img alt="Abilities" src={e.displayIcon} />
               </div>
-            </>
+            </div>
           ))}
         </div>
       </>
@@ -46,26 +45,19 @@ const DetailsCard = ({ data }) => {
         </div>
         <div style={{ display: "flex", flexWrap: "wrap" }}>
           {data?.skins?.map((e) => (
-            <>
+            <div key={e.uuid}>
               <div>
                 <h3>{e.displayName}</h3>
               </div>
               <div>
                 <img alt="Skins" src={e.displayIcon} />
               </div>
-            </>
+            </div>
           ))}
         </div>
       </>
     );
   }
-  return (
-    <>
-      <div>
-        <h1>Loading...</h1>
-      </div>
-    </>
-  );
 };
 
 export default DetailsCard;

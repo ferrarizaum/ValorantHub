@@ -12,30 +12,34 @@ const Card = ({ data, type }) => {
           justifyContent: "center",
         }}
       >
-        {data.map((e) => (
-          <div
-            key={e.uuid}
-            style={{ textAlign: "center", margin: "2em" }}
-            onClick={() => navigate(`/details${type}/${e.uuid}`)}
-          >
+        {data.length > 0 ? (
+          data.map((e) => (
             <div
-              style={{
-                backgroundColor: "lightGray",
-                padding: "1px",
-                borderRadius: "5px",
-              }}
+              key={e.uuid}
+              style={{ textAlign: "center", margin: "2em" }}
+              onClick={() => navigate(`/details${type}/${e.uuid}`)}
             >
-              <img
-                style={{ maxHeight: "250px", maxWidth: "180px" }}
-                alt="feature"
-                src={e.displayIcon}
-              />
+              <div
+                style={{
+                  backgroundColor: "lightGray",
+                  padding: "1px",
+                  borderRadius: "5px",
+                }}
+              >
+                <img
+                  style={{ maxHeight: "250px", maxWidth: "180px" }}
+                  alt="feature"
+                  src={e.displayIcon}
+                />
+              </div>
+              <div>
+                <h1>{e.displayName}</h1>
+              </div>
             </div>
-            <div>
-              <h1>{e.displayName}</h1>
-            </div>
-          </div>
-        ))}
+          ))
+        ) : (
+          <h1>Item not Found ;/</h1>
+        )}
       </div>
     </>
   );

@@ -1,5 +1,6 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
+import { useUserName } from "./UserNameProvider";
 
 export const buttonStyle = {
   backgroundColor: "#000000",
@@ -23,6 +24,8 @@ const Navbar = () => {
       <div style={{ backgroundColor: "#333333", borderRadius: "10px" }}>
         <nav
           style={{
+            display: "flex",
+            justifyContent: "space-between",
             alignItems: "center",
             textAlign: "center",
             verticalAlign: "center",
@@ -53,6 +56,9 @@ const Navbar = () => {
               </button>
             </li>
           </ul>
+          <div style={{ marginRight: "25px" }}>
+            <p style={{ color: "white" }}>Welcome {useUserName().username}</p>
+          </div>
         </nav>
       </div>
     </>

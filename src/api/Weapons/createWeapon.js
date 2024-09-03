@@ -1,13 +1,15 @@
+import Cookies from "js-cookie";
+
 const createWeapon = async (/*token*/ body) => {
-  //console.log(token);
+  const token = Cookies.get("token");
+
   try {
     const response = await fetch(
-      "https://b09e-138-97-132-206.ngrok-free.app/api/weapons",
+      `${process.env.REACT_APP_BACKEND_ADDRESS}/weapons`,
       {
         method: "POST",
         headers: {
-          "ngrok-skip-browser-warning": "true",
-          //Authorization: `Bearer ${token}`,
+          Authorization: `Bearer ${token}`,
           "Content-Type": "application/json",
         },
         body: JSON.stringify(body),

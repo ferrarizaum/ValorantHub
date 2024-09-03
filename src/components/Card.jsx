@@ -15,9 +15,9 @@ const Card = ({ data, type }) => {
         {data.length > 0 ? (
           data.map((e) => (
             <div
-              key={e.uuid}
+              key={e.id}
               style={{ textAlign: "center", margin: "2em" }}
-              onClick={() => navigate(`/details${type}/${e.uuid}`)}
+              onClick={() => navigate(`/details${type}/${e.id}`)}
             >
               <div
                 style={{

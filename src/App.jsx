@@ -1,5 +1,10 @@
 import React from "react";
-import { HashRouter as Router, Route, Routes } from "react-router-dom";
+import {
+  HashRouter as Router,
+  Route,
+  Routes,
+  Navigate,
+} from "react-router-dom";
 import AgentsPage from "./pages/AgentsPage";
 import WeaponsPage from "./pages/WeaponsPage";
 import Home from "./pages/Home";
@@ -15,28 +20,51 @@ const App = () => {
   return (
     <Router>
       <Routes>
-        <Route path="/" element={isAuthenticated ? <Home /> : <LoginPage />} />
+        <Route
+          path="/"
+          element={
+            isAuthenticated ? <Home /> : <Navigate to="/login" replace />
+          }
+        />
         <Route
           path="/agents"
-          element={isAuthenticated ? <AgentsPage /> : <LoginPage />}
+          element={
+            isAuthenticated ? <AgentsPage /> : <Navigate to="/login" replace />
+          }
         />
-        <Route path="/weapons" element={<WeaponsPage />} />
+        <Route
+          path="/weapons"
+          element={
+            isAuthenticated ? <WeaponsPage /> : <Navigate to="/login" replace />
+          }
+        />
         <Route
           path="/details/:type/:uuid"
-          element={isAuthenticated ? <DetailsPage /> : <LoginPage />}
+          element={
+            isAuthenticated ? <DetailsPage /> : <Navigate to="/login" replace />
+          }
         />
         <Route
           path="/agents/create"
-          element={isAuthenticated ? <CreateAgentPage /> : <LoginPage />}
+          element={
+            isAuthenticated ? (
+              <CreateAgentPage />
+            ) : (
+              <Navigate to="/login" replace />
+            )
+          }
         />
         <Route
           path="/weapons/create"
-          element={isAuthenticated ? <CreateWeaponPage /> : <LoginPage />}
+          element={
+            isAuthenticated ? (
+              <CreateWeaponPage />
+            ) : (
+              <Navigate to="/login" replace />
+            )
+          }
         />
-        <Route
-          path="/login"
-          element={isAuthenticated ? <LoginPage /> : <LoginPage />}
-        />
+        <Route path="/login" element={<LoginPage />} />
       </Routes>
     </Router>
   );

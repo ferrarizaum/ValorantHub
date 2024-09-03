@@ -1,13 +1,15 @@
-const createAgent = async (/*token*/ body) => {
-  //console.log(token);
+import Cookies from "js-cookie";
+
+const createAgent = async (body) => {
+  const token = Cookies.get("token");
+
   try {
     const response = await fetch(
-      "https://b09e-138-97-132-206.ngrok-free.app/api/agents",
+      `${process.env.REACT_APP_BACKEND_ADDRESS}/agents`,
       {
         method: "POST",
         headers: {
-          "ngrok-skip-browser-warning": "true",
-          //Authorization: `Bearer ${token}`,
+          Authorization: `Bearer ${token}`,
           "Content-Type": "application/json",
         },
         body: JSON.stringify(body),

@@ -1,6 +1,6 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
-import { useUserName } from "./UserNameProvider";
+import Cookies from "js-cookie";
 
 export const buttonStyle = {
   backgroundColor: "#000000",
@@ -57,8 +57,7 @@ const Navbar = () => {
             </li>
           </ul>
           <div style={{ marginRight: "25px" }}>
-            <p style={{ color: "white" }}>Welcome {useUserName().username}</p>{" "}
-            {/* change to username auth*/}
+            <p style={{ color: "white" }}>Welcome {Cookies.get("username")}</p>
           </div>
         </nav>
       </div>

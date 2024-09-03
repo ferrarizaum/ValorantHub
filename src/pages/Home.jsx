@@ -22,17 +22,6 @@ const Home = () => {
         <div>
           <h1>Welcome to ValorantHub</h1>
         </div>
-        <div>
-          <h1>{useUserName().username}</h1>
-        </div>
-        <div>
-          <input
-            type="text"
-            value={userName}
-            onChange={handleChange}
-            placeholder="Type your name"
-          />
-        </div>
       </div>
     </>
   );

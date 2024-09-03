@@ -57,7 +57,8 @@ const Navbar = () => {
             </li>
           </ul>
           <div style={{ marginRight: "25px" }}>
-            <p style={{ color: "white" }}>Welcome {useUserName().username}</p>
+            <p style={{ color: "white" }}>Welcome {useUserName().username}</p>{" "}
+            {/* change to username auth*/}
           </div>
         </nav>
       </div>

@@ -1,8 +1,6 @@
-const fetchAgents = async () => {
+const fetchDetails = async ({ type, uuid }) => {
   try {
-    const response = await fetch(
-      "https://valorant-api.com/v1/agents?isPlayableCharacter=true"
-    );
+    const response = await fetch(`https://valorant-api.com/v1/${type}/${uuid}`);
     if (!response.ok) {
       throw new Error("Network response was not ok");
     }
@@ -14,4 +12,4 @@ const fetchAgents = async () => {
   }
 };
 
-export default fetchAgents;
+export default fetchDetails;

@@ -3,6 +3,8 @@ import { useNavigate } from "react-router-dom";
 
 const Card = ({ data, type }) => {
   const navigate = useNavigate();
+  console.log(data);
+  console.log(process.env.REACT_APP_BACKEND_ADDRESS);
   return (
     <>
       <div
@@ -29,7 +31,9 @@ const Card = ({ data, type }) => {
                 <img
                   style={{ maxHeight: "250px", maxWidth: "180px" }}
                   alt="feature"
-                  src={e.displayIcon}
+                  src={
+                    "https://8f78-138-97-132-206.ngrok-free.app/ADADADADA2024-09-03T18:37:01.789691.png"
+                  }
                 />
               </div>
               <div>

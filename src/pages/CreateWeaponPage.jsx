@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { useForm } from "react-hook-form";
 import Navbar from "../components/Navbar";
 import { useMutation } from "@tanstack/react-query";
@@ -25,14 +25,27 @@ const CreateWeaponPage = () => {
   } = useForm();
 
   const { mutate, isLoading, isError, isSuccess } = useCreateWeapon();
-  const [snackbarOpen, setSnackbarOpen] = React.useState(false);
+  const [snackbarOpen, setSnackbarOpen] = useState(false);
+  const [base64Image, setBase64Image] = useState("");
 
   const onSubmit = async (data) => {
     try {
-      await mutate(data);
+      const formData = { ...data, file: base64Image };
+      await mutate(formData);
       setSnackbarOpen(true);
     } catch (error) {
       console.error("Error submitting form:", error);
+    }
+  };
+
+  const handleImageChange = (e) => {
+    const file = e.target.files[0];
+    if (file) {
+      const reader = new FileReader();
+      reader.readAsDataURL(file);
+      reader.onloadend = () => {
+        setBase64Image(reader.result);
+      };
     }
   };
 
@@ -88,6 +101,23 @@ const CreateWeaponPage = () => {
               <p className="error-message">{errors.description.message}</p>
             )}
           </div>
+
+          {/* Image Upload Field */}
+          <div>
+            <label htmlFor="imageUpload">Upload Image:</label>
+            <input
+              id="imageUpload"
+              type="file"
+              accept="image/*"
+              onChange={handleImageChange}
+            />
+          </div>
+          {base64Image && (
+            <div>
+              <h4>Image Preview:</h4>
+              <img src={base64Image} alt="Preview" style={{ width: "300px" }} />
+            </div>
+          )}
 
           <button type="submit" disabled={isLoading}>
             {isLoading ? "Creating..." : "Create Weapon"}

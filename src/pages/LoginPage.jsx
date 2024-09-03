@@ -49,56 +49,72 @@ const LogInPage = () => {
 
   return (
     <>
-      <div>
-        <h2>Log In</h2>
-        <form onSubmit={handleSubmit(onSubmit)}>
-          <div>
-            <label htmlFor="login">Username:</label>
-            <input
-              id="login"
-              type="text"
-              {...register("login", {
-                required: "Username is required",
-                minLength: {
-                  value: 3,
-                  message: "Minimum length should be 3 characters",
-                },
-                maxLength: {
-                  value: 50,
-                  message: "Maximum length should be 50 characters",
-                },
-              })}
-            />
-            {errors.displayName && (
-              <p className="error-message">{errors.displayName.message}</p>
-            )}
-          </div>
+      <div
+        style={{
+          display: "flex",
+          flexDirection: "column",
+          alignItems: "center",
+        }}
+      >
+        <div>
+          <h2>Log In</h2>
+        </div>
+        <div>
+          <form onSubmit={handleSubmit(onSubmit)}>
+            <div>
+              <label htmlFor="login">Username:</label>
+              <input
+                id="login"
+                type="text"
+                {...register("login", {
+                  required: "Username is required",
+                  minLength: {
+                    value: 3,
+                    message: "Minimum length should be 3 characters",
+                  },
+                  maxLength: {
+                    value: 50,
+                    message: "Maximum length should be 50 characters",
+                  },
+                })}
+              />
+              {errors.displayName && (
+                <p className="error-message">{errors.displayName.message}</p>
+              )}
+            </div>
 
-          <div>
-            <label htmlFor="senha">Password:</label>
-            <input
-              id="senha"
-              {...register("senha", {
-                required: "Password is required",
-                maxLength: {
-                  value: 50,
-                  message: "Maximum length should be 50 characters",
-                },
-                minLength: {
-                  value: 3,
-                  message: "Minimum length should be 3 characters",
-                },
-              })}
-            />
-            {errors.description && (
-              <p className="error-message">{errors.description.message}</p>
-            )}
-          </div>
+            <div style={{ margin: 2 }}>
+              <label htmlFor="senha">Password:</label>
+              <input
+                id="senha"
+                {...register("senha", {
+                  required: "Password is required",
+                  maxLength: {
+                    value: 50,
+                    message: "Maximum length should be 50 characters",
+                  },
+                  minLength: {
+                    value: 3,
+                    message: "Minimum length should be 3 characters",
+                  },
+                })}
+              />
+              {errors.description && (
+                <p className="error-message">{errors.description.message}</p>
+              )}
+            </div>
 
-          <button type="submit" disabled={isLoading}>
-            {isLoading ? "Logging in..." : "Log in"}
-          </button>
-        </form>
+            <div
+              style={{
+                textAlign: "center",
+              }}
+            >
+              <button style={{ margin: 2 }} type="submit" disabled={isLoading}>
+                {isLoading ? "Logging in..." : "Log in"}
+              </button>
+            </div>
+          </form>
+        </div>
       </div>
 
       <Snackbar

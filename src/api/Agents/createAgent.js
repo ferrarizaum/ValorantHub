@@ -5,7 +5,7 @@ const createAgent = async (body) => {
 
   try {
     const response = await fetch(
-      `${process.env.REACT_APP_BACKEND_ADDRESS}/agents`,
+      `${process.env.REACT_APP_BACKEND_ADDRESS}/agent`,
       {
         method: "POST",
         headers: {

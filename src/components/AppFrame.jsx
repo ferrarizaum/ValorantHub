@@ -12,6 +12,7 @@ const AppFrame = ({ children }) => {
         overflowY: "auto",
         fontFamily: "Roboto",
         fontSize: "Medium",
+        background: "linear-gradient(to top, black, gray)",
       }}
     >
       {children}

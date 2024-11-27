@@ -23,7 +23,12 @@ const Navbar = () => {
   const { logout } = useAuth();
   return (
     <>
-      <div style={{ backgroundColor: "#333333", borderRadius: "10px" }}>
+      <div
+        style={{
+          backgroundColor: "#333333",
+          borderRadius: "2px 2px 2px 2px",
+        }}
+      >
         <nav
           style={{
             display: "flex",

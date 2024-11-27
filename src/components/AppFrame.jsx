@@ -4,11 +4,10 @@ const AppFrame = ({ children }) => {
   return (
     <div
       style={{
-        height: "98vh",
+        height: "100vh",
         backgroundColor: "#808080",
         margin: 0,
         padding: 0,
-        borderRadius: "10px",
         overflowY: "auto",
         fontFamily: "Roboto",
         fontSize: "Medium",

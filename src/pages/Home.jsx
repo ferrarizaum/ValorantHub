@@ -17,6 +17,8 @@ const Home = () => {
           justifyContent: "center",
           flexDirection: "column",
           alignItems: "center",
+          fontWeight: "bold",
+          fontSize: 24,
         }}
       >
         <div>

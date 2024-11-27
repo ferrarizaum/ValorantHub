@@ -63,7 +63,9 @@ const LogInPage = () => {
           elevation={4}
           sx={{ mt: 12, p: 2, textAlign: "center", borderRadius: 2 }}
         >
-          <div>
+          <div
+            style={{ fontSize: 20, fontWeight: "bold", margin: 2, padding: 2 }}
+          >
             <h2>Log In</h2>
           </div>
           <div>

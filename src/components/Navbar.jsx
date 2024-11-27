@@ -58,7 +58,7 @@ const Navbar = () => {
               </button>
             </li>
           </ul>
-          <div>
+          <div style={{ display: "flex", alignItems: "center" }}>
             <div style={{ marginRight: "25px" }}>
               <p style={{ color: "white" }}>
                 Welcome {Cookies.get("username")}

@@ -1,6 +1,6 @@
 import React from "react";
 import {
-  HashRouter as Router,
+  BrowserRouter as Router,
   Route,
   Routes,
   Navigate,
@@ -15,7 +15,7 @@ import CreateAgentPage from "./pages/CreateAgentPage";
 import CreateWeaponPage from "./pages/CreateWeaponPage";
 
 const App = () => {
-  const { isAuthenticated, login, logout } = useAuth();
+  const { isAuthenticated } = useAuth();
 
   return (
     <Router>

@@ -93,7 +93,7 @@ const LogInPage = () => {
                   disabled={isLoading}
                   type="submit"
                 >
-                  Log In
+                  Submit
                 </Button>
               </div>
             </form>

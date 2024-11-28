@@ -89,6 +89,14 @@ const CreateAgentPage = () => {
             )}
           </div>
 
+          <div>
+            <label htmlFor="imageUrl">imageUrl:</label>
+            <textarea id="imageUrl" rows="5" {...register("imageUrl")} />
+            {errors.description && (
+              <p className="error-message">{errors.description.message}</p>
+            )}
+          </div>
+
           <button type="submit" disabled={isLoading}>
             {isLoading ? "Creating..." : "Create Agent"}
           </button>

@@ -102,22 +102,13 @@ const CreateWeaponPage = () => {
             )}
           </div>
 
-          {/* Image Upload Field */}
           <div>
-            <label htmlFor="imageUpload">Upload Image:</label>
-            <input
-              id="imageUpload"
-              type="file"
-              accept="image/*"
-              onChange={handleImageChange}
-            />
+            <label htmlFor="imageUrl">imageUrl:</label>
+            <textarea id="imageUrl" rows="5" {...register("imageUrl")} />
+            {errors.description && (
+              <p className="error-message">{errors.description.message}</p>
+            )}
           </div>
-          {base64Image && (
-            <div>
-              <h4>Image Preview:</h4>
-              <img src={base64Image} alt="Preview" style={{ width: "300px" }} />
-            </div>
-          )}
 
           <button type="submit" disabled={isLoading}>
             {isLoading ? "Creating..." : "Create Weapon"}

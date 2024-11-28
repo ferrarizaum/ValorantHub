@@ -31,9 +31,7 @@ const Card = ({ data, type }) => {
                 <img
                   style={{ maxHeight: "250px", maxWidth: "180px" }}
                   alt="feature"
-                  src={
-                    "https://8f78-138-97-132-206.ngrok-free.app/ADADADADA2024-09-03T18:37:01.789691.png"
-                  }
+                  src={e.imageUrl}
                 />
               </div>
               <div>

@@ -8,7 +8,6 @@ const Filter = ({ filter, setFilter }) => {
           padding: "12px",
           borderRadius: "5px",
           outline: "none",
-          marginLeft: "90px",
           marginTop: "10px",
         }}
         type="text"

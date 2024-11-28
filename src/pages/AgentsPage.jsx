@@ -30,11 +30,17 @@ const AgentsPage = () => {
   return (
     <>
       <Navbar />
-      <div style={{ display: "flex", alignItems: "center" }}>
-        <div>
+      <div
+        style={{
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "space-between",
+        }}
+      >
+        <div style={{ marginLeft: 24 }}>
           <Filter filter={filter} setFilter={setFilter} />
         </div>
-        <div>
+        <div style={{ marginRight: 24 }}>
           <button onClick={() => navigate("/agents/create")}>
             Create new Agent
           </button>

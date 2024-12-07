@@ -4,28 +4,31 @@ import Cookies from "js-cookie";
 const AuthContext = createContext();
 
 const AuthProvider = ({ children }) => {
-  const [isAuthenticated, setIsAuthenticated] = useState(true); // change to false
+  const [isAuthenticated, setIsAuthenticated] = useState(false);
 
   useEffect(() => {
     const storedToken = Cookies.get("token");
-    if (!storedToken) {
+    if (storedToken) {
+      setIsAuthenticated(true);
+    } else {
       setIsAuthenticated(false);
     }
   }, []);
 
-  const login = (token, username) => {
-    document.cookie = `token=${token}`;
-    document.cookie = `username=${username}`;
+  const login = (token, userName) => {
+    Cookies.set("token", token);
+    Cookies.set("userName", userName);
     setIsAuthenticated(true);
   };
 
   const logout = () => {
-    localStorage.removeItem("token");
+    Cookies.remove("token");
+    Cookies.remove("userName");
     setIsAuthenticated(false);
   };
 
   const checkAuthentication = () => {
-    const storedToken = localStorage.getItem("token");
+    const storedToken = Cookies.get("token");
     return !!storedToken;
   };
 
@@ -43,8 +46,6 @@ const AuthProvider = ({ children }) => {
   );
 };
 
-const useAuth = () => {
-  return React.useContext(AuthContext);
-};
+const useAuth = () => React.useContext(AuthContext);
 
 export { AuthProvider, useAuth };

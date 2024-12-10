@@ -5,7 +5,7 @@ import Snackbar from "@mui/material/Snackbar";
 import fetchLogin from "../api/fetchLogin";
 import { useAuth } from "../components/context/AuthContext";
 import { useNavigate } from "react-router-dom";
-import { Button, Paper, TextField, Alert } from "@mui/material";
+import { Button, Paper, TextField, Alert, Typography } from "@mui/material";
 
 const useLogIn = () => {
   const navigate = useNavigate();
@@ -72,15 +72,26 @@ const LogInPage = () => {
               helperText={errors.password?.message}
             />
           </div>
-          <Button
-            variant="contained"
-            color="primary"
-            fullWidth
-            type="submit"
-            disabled={isLoading}
-          >
-            {isLoading ? "Logging in..." : "Submit"}
-          </Button>
+          <div>
+            <div>
+              <Button
+                variant="contained"
+                color="primary"
+                fullWidth
+                type="submit"
+                disabled={isLoading}
+              >
+                {isLoading ? "Logging in..." : "Sign In"}
+              </Button>
+            </div>
+            <div style={{ marginTop: 20 }}>
+              <Button>
+                <Typography variant="contained" color="primary">
+                  Create new user
+                </Typography>
+              </Button>
+            </div>
+          </div>
         </form>
         {isError && (
           <Alert severity="error" sx={{ marginTop: 2 }}>

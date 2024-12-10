@@ -5,45 +5,8 @@ import Snackbar from "@mui/material/Snackbar";
 import fetchLogin from "../api/fetchLogin";
 import { useAuth } from "../components/context/AuthContext";
 import { useNavigate } from "react-router-dom";
-import {
-  Button,
-  Paper,
-  TextField,
-  Alert,
-  Modal,
-  Typography,
-} from "@mui/material";
+import { Button, Paper, TextField, Alert } from "@mui/material";
 import CreateUserForm from "../components/CreateUserForm";
-
-function ChildModal() {
-  const [open, setOpen] = React.useState(false);
-  const handleOpen = () => {
-    setOpen(true);
-  };
-  const handleClose = () => {
-    setOpen(false);
-  };
-
-  return (
-    <React.Fragment>
-      <Button onClick={handleOpen}>Open Child Modal</Button>
-      <Modal
-        open={open}
-        onClose={handleClose}
-        aria-labelledby="child-modal-title"
-        aria-describedby="child-modal-description"
-      >
-        <div sx={{ width: 200 }}>
-          <h2 id="child-modal-title">Text in a child modal</h2>
-          <p id="child-modal-description">
-            Lorem ipsum, dolor sit amet consectetur adipisicing elit.
-          </p>
-          <Button onClick={handleClose}>Close Child Modal</Button>
-        </div>
-      </Modal>
-    </React.Fragment>
-  );
-}
 
 const useLogIn = () => {
   const navigate = useNavigate();

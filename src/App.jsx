@@ -39,7 +39,7 @@ const App = () => {
           }
         />
         <Route
-          path="/details/:type/:uuid"
+          path="/:type/details/:uuid"
           element={
             isAuthenticated ? <DetailsPage /> : <Navigate to="/login" replace />
           }

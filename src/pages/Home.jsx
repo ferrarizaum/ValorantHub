@@ -21,7 +21,7 @@ const Home = () => {
           fontSize: 24,
         }}
       >
-        <div>
+        <div style={{ marginTop: 20 }}>
           <h1>Welcome to ValorantHub</h1>
         </div>
       </div>

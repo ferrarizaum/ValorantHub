@@ -4,12 +4,11 @@ const fetchDetails = async ({ type, uuid }) => {
   const token = Cookies.get("token");
   try {
     const response = await fetch(
-      `${process.env.REACT_APP_BACKEND_ADDRESS}/${type}/${uuid}`,
+      `${process.env.REACT_APP_BACKEND_ADDRESS}/${type}/details/${uuid}`,
       {
         method: "GET",
         headers: {
           Authorization: `Bearer ${token}`,
-          "ngrok-skip-browser-warning": "true",
         },
       }
     );

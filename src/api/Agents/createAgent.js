@@ -4,7 +4,7 @@ const createAgent = async (body) => {
   const token = Cookies.get("token");
   try {
     const response = await fetch(
-      `${process.env.REACT_APP_BACKEND_ADDRESS}/agent`,
+      `${process.env.REACT_APP_BACKEND_ADDRESS}/agents`,
       {
         method: "POST",
         headers: {

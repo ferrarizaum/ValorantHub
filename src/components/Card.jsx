@@ -17,7 +17,7 @@ const Card = ({ data, type }) => {
             <div
               key={e.id}
               style={{ textAlign: "center", margin: "2em" }}
-              onClick={() => navigate(`/details${type}/${e.id}`)}
+              onClick={() => navigate(`${type}/details/${e.id}`)}
             >
               <div
                 style={{

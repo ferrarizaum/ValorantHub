@@ -4,7 +4,7 @@ const createWeapon = async (body) => {
   const token = Cookies.get("token");
   try {
     const response = await fetch(
-      `${process.env.REACT_APP_BACKEND_ADDRESS}/weapon`,
+      `${process.env.REACT_APP_BACKEND_ADDRESS}/weapons`,
       {
         method: "POST",
         headers: {

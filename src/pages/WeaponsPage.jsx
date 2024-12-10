@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useMemo } from "react";
-import Navbar from "../components/Navbar";
+import Navbar, { buttonStyle } from "../components/Navbar";
 import Card from "../components/Card";
 import fetchWeapons from "../api/Weapons/fetchWeapons";
 import Filter from "../components/Filter";
@@ -34,14 +34,17 @@ const WeaponsPage = () => {
         style={{
           display: "flex",
           alignItems: "center",
-          justifyContent: "space-between",
+          justifyContent: "center",
         }}
       >
-        <div style={{ marginLeft: 24 }}>
+        <div>
           <Filter filter={filter} setFilter={setFilter} />
         </div>
-        <div style={{ marginRight: 24 }}>
-          <button onClick={() => navigate("/weapons/create")}>
+        <div style={{ alignSelf: "center", marginTop: 6, marginLeft: 6 }}>
+          <button
+            style={buttonStyle}
+            onClick={() => navigate("/weapons/create")}
+          >
             Create new Weapon
           </button>
         </div>

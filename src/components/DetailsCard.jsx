@@ -6,21 +6,20 @@ const DetailsCard = ({ data }) => {
   if (type === "agents") {
     return (
       <>
-        {/*
-
         <div>
-          <img alt="Details" src={data.displayIcon} />
+          <img
+            style={{ maxWidth: 500, maxHeight: 500 }}
+            alt="Details"
+            src={data.imageUrl}
+          />
         </div>
-        */}
         <div>
           <h1>{data.displayName}</h1>
         </div>
-        {/*
-          <div>
-            <h3>{data.description}</h3>
-          </div>
+        <div>
+          <h3>{data.description}</h3>
+        </div>
 
-          */}
         {/*
           <div style={{ display: "flex", flexWrap: "wrap" }}>
             {data?.abilities?.map((e) => (
@@ -43,16 +42,20 @@ const DetailsCard = ({ data }) => {
   if (type === "weapons") {
     return (
       <>
-        <div></div>
+        <div>
+          <img
+            style={{ maxWidth: 500, maxHeight: 500 }}
+            alt="Details"
+            src={data.imageUrl}
+          />
+        </div>
         <div>
           <h1>{data.displayName}</h1>
         </div>
-        {/*
-          <div>
-            <h2>{data?.category?.slice(21)}</h2>
-          </div>
+        <div>
+          <h2>{data.description}</h2>
+        </div>
 
-          */}
         {/*
 
           <div style={{ display: "flex", flexWrap: "wrap" }}>

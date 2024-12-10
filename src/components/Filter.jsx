@@ -5,10 +5,11 @@ const Filter = ({ filter, setFilter }) => {
     <div>
       <input
         style={{
-          padding: "12px",
-          borderRadius: "5px",
+          width: 400,
+          padding: 12,
+          borderRadius: 5,
+          marginTop: 10,
           outline: "none",
-          marginTop: "10px",
         }}
         type="text"
         placeholder="Filter by name"

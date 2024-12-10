@@ -5,14 +5,14 @@ const AuthContext = createContext();
 
 const AuthProvider = ({ children }) => {
   const [isAuthenticated, setIsAuthenticated] = useState(false);
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     const storedToken = Cookies.get("token");
     if (storedToken) {
       setIsAuthenticated(true);
-    } else {
-      setIsAuthenticated(false);
     }
+    setLoading(false);
   }, []);
 
   const login = (token, userName) => {
@@ -31,6 +31,10 @@ const AuthProvider = ({ children }) => {
     const storedToken = Cookies.get("token");
     return !!storedToken;
   };
+
+  if (loading) {
+    return <div>Loading...</div>;
+  }
 
   return (
     <AuthContext.Provider

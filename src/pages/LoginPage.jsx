@@ -5,7 +5,46 @@ import Snackbar from "@mui/material/Snackbar";
 import fetchLogin from "../api/fetchLogin";
 import { useAuth } from "../components/context/AuthContext";
 import { useNavigate } from "react-router-dom";
-import { Button, Paper, TextField, Alert, Typography } from "@mui/material";
+import {
+  Button,
+  Paper,
+  TextField,
+  Alert,
+  Modal,
+  Typography,
+} from "@mui/material";
+import CreateUserForm from "../components/CreateUserForm";
+import NestedModal from "../components/test";
+
+function ChildModal() {
+  const [open, setOpen] = React.useState(false);
+  const handleOpen = () => {
+    setOpen(true);
+  };
+  const handleClose = () => {
+    setOpen(false);
+  };
+
+  return (
+    <React.Fragment>
+      <Button onClick={handleOpen}>Open Child Modal</Button>
+      <Modal
+        open={open}
+        onClose={handleClose}
+        aria-labelledby="child-modal-title"
+        aria-describedby="child-modal-description"
+      >
+        <div sx={{ width: 200 }}>
+          <h2 id="child-modal-title">Text in a child modal</h2>
+          <p id="child-modal-description">
+            Lorem ipsum, dolor sit amet consectetur adipisicing elit.
+          </p>
+          <Button onClick={handleClose}>Close Child Modal</Button>
+        </div>
+      </Modal>
+    </React.Fragment>
+  );
+}
 
 const useLogIn = () => {
   const navigate = useNavigate();
@@ -33,7 +72,11 @@ const LogInPage = () => {
   const [snackbarOpen, setSnackbarOpen] = useState(false);
 
   const onSubmit = async (data) => {
-    mutate(data, {
+    const loginData = {
+      userName: data.loginUserName,
+      password: data.loginPassword,
+    };
+    mutate(loginData, {
       onSuccess: () => setSnackbarOpen(true),
     });
   };
@@ -57,7 +100,9 @@ const LogInPage = () => {
             <TextField
               fullWidth
               label="Username"
-              {...register("userName", { required: "Username is required" })}
+              {...register("loginUserName", {
+                required: "Username is required",
+              })}
               error={!!errors.userName}
               helperText={errors.userName?.message}
             />
@@ -67,29 +112,25 @@ const LogInPage = () => {
               fullWidth
               type="password"
               label="Password"
-              {...register("password", { required: "Password is required" })}
+              {...register("loginPassword", {
+                required: "Password is required",
+              })}
               error={!!errors.password}
               helperText={errors.password?.message}
             />
           </div>
           <div>
-            <div>
-              <Button
-                variant="contained"
-                color="primary"
-                fullWidth
-                type="submit"
-                disabled={isLoading}
-              >
-                {isLoading ? "Logging in..." : "Sign In"}
-              </Button>
-            </div>
-            <div style={{ marginTop: 20 }}>
-              <Button>
-                <Typography variant="contained" color="primary">
-                  Create new user
-                </Typography>
-              </Button>
+            <Button
+              variant="contained"
+              color="primary"
+              fullWidth
+              type="submit"
+              disabled={isLoading}
+            >
+              {isLoading ? "Logging in..." : "Sign In"}
+            </Button>
+            <div style={{ marginTop: 5 }}>
+              <CreateUserForm />
             </div>
           </div>
         </form>

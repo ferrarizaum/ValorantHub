@@ -1,5 +1,4 @@
 const fetchLogin = async (body) => {
-  console.log(body);
   try {
     const response = await fetch(
       `${process.env.REACT_APP_BACKEND_ADDRESS}/auth`,

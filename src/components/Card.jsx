@@ -3,8 +3,6 @@ import { useNavigate } from "react-router-dom";
 
 const Card = ({ data, type }) => {
   const navigate = useNavigate();
-  console.log(data);
-  console.log(process.env.REACT_APP_BACKEND_ADDRESS);
   return (
     <>
       <div

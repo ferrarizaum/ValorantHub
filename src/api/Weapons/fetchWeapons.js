@@ -9,7 +9,6 @@ const fetchWeapons = async () => {
         method: "GET",
         headers: {
           Authorization: `Bearer ${token}`,
-          "ngrok-skip-browser-warning": "true",
         },
       }
     );

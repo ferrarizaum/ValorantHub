@@ -1,0 +1,20 @@
+name: CI-CD
+
+on:
+  push:
+    branches: ["master"]
+    
+jobs:
+  CI:
+    runs-on: ubuntu-latest
+
+    steps: 
+      - name: Continuous integration
+        run: echo "Going through CI pipeline..."
+  CD:
+    runs-on: ubuntu-latest
+    needs: [CI]
+
+    steps: 
+      - name: Deploying to cloud
+        run: echo "Deploying to cloud..."

@@ -11,8 +11,6 @@ import Home from "./pages/Home";
 import DetailsPage from "./pages/DetailsPage";
 import LoginPage from "./pages/LoginPage";
 import { useAuth } from "./components/context/AuthContext";
-import CreateAgentPage from "./pages/CreateAgentPage";
-import CreateWeaponPage from "./pages/CreateWeaponPage";
 
 const App = () => {
   const { isAuthenticated } = useAuth();
@@ -44,26 +42,7 @@ const App = () => {
             isAuthenticated ? <DetailsPage /> : <Navigate to="/login" replace />
           }
         />
-        <Route
-          path="/agents/create"
-          element={
-            isAuthenticated ? (
-              <CreateAgentPage />
-            ) : (
-              <Navigate to="/login" replace />
-            )
-          }
-        />
-        <Route
-          path="/weapons/create"
-          element={
-            isAuthenticated ? (
-              <CreateWeaponPage />
-            ) : (
-              <Navigate to="/login" replace />
-            )
-          }
-        />
+
         <Route path="/login" element={<LoginPage />} />
       </Routes>
     </Router>

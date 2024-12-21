@@ -1,17 +1,19 @@
 import React, { useState } from "react";
 import { useForm } from "react-hook-form";
-import { Button, Modal, Paper, TextField, Typography } from "@mui/material";
+import { Button, Modal, Paper, TextField } from "@mui/material";
 import { useMutation } from "@tanstack/react-query";
-import createUser from "../api/Users/createUser";
+import createWeapon from "../api/Weapons/createWeapon";
+import { buttonStyle } from "./Navbar";
 
-const useCreateUser = () => {
+const useCreateWeapon = () => {
   return useMutation({
-    mutationFn: createUser,
+    mutationFn: createWeapon,
     onSuccess: () => {
-      console.log("User created successfully");
+      window.location.reload();
+      console.log("Weapon created successfully");
     },
     onError: (error) => {
-      console.error("Error creating user:", error);
+      console.error("Error creating weapon:", error);
     },
   });
 };
@@ -23,15 +25,16 @@ function CreateWeaponForm() {
     handleSubmit,
     formState: { errors },
   } = useForm();
-  const { mutate: createUserMutate, isLoading: isCreatingUser } =
-    useCreateUser();
+  const { mutate: createWeaponMutate, isLoading: isCreatingWeapon } =
+    useCreateWeapon();
 
   const onSubmit = (data) => {
-    const newUser = {
-      userName: data.newUserName,
-      password: data.newPassword,
+    const newWeapon = {
+      displayName: data.displayName,
+      description: data.description,
+      imageUrl: data.imageUrl,
     };
-    createUserMutate(newUser, {
+    createWeaponMutate(newWeapon, {
       onSuccess: () => {
         setOpen(!open);
       },
@@ -41,7 +44,9 @@ function CreateWeaponForm() {
   return (
     <>
       <div>
-        <Button onClick={() => setOpen(!open)}>Create new weapon</Button>
+        <Button style={buttonStyle} onClick={() => setOpen(!open)}>
+          Create new weapon
+        </Button>
         <Modal open={open} onClose={() => setOpen(!open)}>
           <Paper
             elevation={4}
@@ -55,30 +60,41 @@ function CreateWeaponForm() {
             }}
           >
             <div style={{ marginTop: 5, marginBottom: 20 }}>
-              <h2>Create New User</h2>
+              <h2>Create New Agent</h2>
             </div>
             <form onSubmit={handleSubmit(onSubmit)}>
               <div style={{ marginBottom: 16 }}>
                 <TextField
                   fullWidth
-                  label="Username"
-                  {...register("newUserName", {
-                    required: "Username is required",
+                  label="DisplayName"
+                  {...register("displayName", {
+                    required: "displayName is required",
                   })}
-                  error={!!errors.newUserName}
-                  helperText={errors.newUserName?.message}
+                  error={!!errors.displayName}
+                  helperText={errors.displayName?.message}
                 />
               </div>
               <div style={{ marginBottom: 16 }}>
                 <TextField
                   fullWidth
-                  type="password"
-                  label="Password"
-                  {...register("newPassword", {
-                    required: "Password is required",
+                  label="Description"
+                  {...register("description", {
+                    required: "description is required",
                   })}
-                  error={!!errors.newPassword}
-                  helperText={errors.newPassword?.message}
+                  error={!!errors.description}
+                  helperText={errors.description?.message}
+                />
+              </div>
+              <div style={{ marginBottom: 16 }}>
+                <TextField
+                  fullWidth
+                  type="imageUrl"
+                  label="imageUrl"
+                  {...register("imageUrl", {
+                    required: "imageUrl is required",
+                  })}
+                  error={!!errors.imageUrl}
+                  helperText={errors.imageUrl?.message}
                 />
               </div>
               <Button
@@ -86,9 +102,9 @@ function CreateWeaponForm() {
                 color="primary"
                 fullWidth
                 type="submit"
-                disabled={isCreatingUser}
+                disabled={isCreatingWeapon}
               >
-                {isCreatingUser ? "Creating user..." : "Create User"}
+                {isCreatingWeapon ? "Creating weapon..." : "Create Weapon"}
               </Button>
             </form>
           </Paper>

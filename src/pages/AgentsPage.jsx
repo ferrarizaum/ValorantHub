@@ -1,16 +1,16 @@
 import React, { useState, useEffect, useMemo } from "react";
-import Navbar, { buttonStyle } from "../components/Navbar";
+import Navbar from "../components/Navbar";
 import Card from "../components/Card";
 import Filter from "../components/Filter";
 import fetchAgents from "../api/Agents/fetchAgents";
-import { useLocation, useNavigate } from "react-router-dom";
+import { useLocation } from "react-router-dom";
+import CreateAgentForm from "../components/CreateAgentForm";
 
 const AgentsPage = () => {
   const [data, setData] = useState([]);
   const [filter, setFilter] = useState("");
   const location = useLocation();
   const type = location.pathname;
-  const navigate = useNavigate();
 
   useEffect(() => {
     const fetchData = async () => {
@@ -41,12 +41,7 @@ const AgentsPage = () => {
           <Filter filter={filter} setFilter={setFilter} />
         </div>
         <div style={{ alignSelf: "center", marginTop: 6, marginLeft: 6 }}>
-          <button
-            style={buttonStyle}
-            onClick={() => navigate("/agents/create")}
-          >
-            Create new Agent
-          </button>
+          <CreateAgentForm />
         </div>
       </div>
       <Card data={filteredData} type={type} />

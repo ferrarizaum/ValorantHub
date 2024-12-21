@@ -41,7 +41,7 @@ function CreateWeaponForm() {
   return (
     <>
       <div>
-        <Button onClick={() => setOpen(!open)}>Create new user</Button>
+        <Button onClick={() => setOpen(!open)}>Create new weapon</Button>
         <Modal open={open} onClose={() => setOpen(!open)}>
           <Paper
             elevation={4}

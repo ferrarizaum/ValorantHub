@@ -41,7 +41,7 @@ function CreateAgentForm() {
   return (
     <>
       <div>
-        <Button onClick={() => setOpen(!open)}>Create new user</Button>
+        <Button onClick={() => setOpen(!open)}>Create new agent</Button>
         <Modal open={open} onClose={() => setOpen(!open)}>
           <Paper
             elevation={4}

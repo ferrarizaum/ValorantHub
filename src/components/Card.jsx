@@ -1,8 +1,16 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 
 const Card = ({ data, type }) => {
   const navigate = useNavigate();
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    if (data.length > 0) {
+      setLoading(false);
+    }
+  }, [data]);
+
   return (
     <>
       <div
@@ -12,7 +20,9 @@ const Card = ({ data, type }) => {
           justifyContent: "center",
         }}
       >
-        {data.length > 0 ? (
+        {loading ? (
+          <h1>Loading...</h1> // Show this while the data is being fetched
+        ) : data.length > 0 ? (
           data.map((e) => (
             <div
               key={e.id}
@@ -22,17 +32,21 @@ const Card = ({ data, type }) => {
               <div
                 style={{
                   backgroundColor: "lightGray",
-                  padding: "1px",
+                  padding: "5px",
                   borderRadius: "5px",
                 }}
               >
                 <img
-                  style={{ maxHeight: "250px", maxWidth: "180px" }}
+                  style={{
+                    height: "180px",
+                    width: "180px",
+                    borderRadius: 20,
+                  }}
                   alt="feature"
                   src={e.imageUrl}
                 />
               </div>
-              <div>
+              <div style={{ marginTop: 20, color: "white" }}>
                 <h1>{e.displayName}</h1>
               </div>
             </div>

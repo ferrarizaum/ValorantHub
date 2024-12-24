@@ -3,7 +3,6 @@ import { useForm } from "react-hook-form";
 import { Button, Modal, Paper, TextField } from "@mui/material";
 import { useMutation } from "@tanstack/react-query";
 import createAgent from "../api/Agents/createAgent";
-import { buttonStyle } from "./Navbar";
 
 const useCreateAgent = () => {
   return useMutation({
@@ -44,7 +43,17 @@ function CreateAgentForm() {
   return (
     <>
       <div>
-        <Button style={buttonStyle} onClick={() => setOpen(!open)}>
+        <Button
+          variant="contained"
+          sx={{
+            height: 40,
+            backgroundColor: "#000000",
+            color: "white",
+            m: 2,
+            p: 2,
+          }}
+          onClick={() => setOpen(!open)}
+        >
           Create new agent
         </Button>
         <Modal open={open} onClose={() => setOpen(!open)}>

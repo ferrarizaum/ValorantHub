@@ -37,7 +37,7 @@ const AgentsPage = () => {
           justifyContent: "center",
         }}
       >
-        <div>
+        <div style={{ marginBottom: 3 }}>
           <Filter filter={filter} setFilter={setFilter} />
         </div>
         <div style={{ alignSelf: "center", marginTop: 6, marginLeft: 6 }}>

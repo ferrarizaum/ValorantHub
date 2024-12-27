@@ -2,6 +2,7 @@ import Cookies from "js-cookie";
 
 const createAgent = async (body) => {
   const token = Cookies.get("token");
+  console.log(body);
   try {
     const response = await fetch(
       `${process.env.REACT_APP_BACKEND_ADDRESS}/agents`,

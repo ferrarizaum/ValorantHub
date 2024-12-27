@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import Cookies from "js-cookie";
 import { useForm } from "react-hook-form";
 import { Button, Modal, Paper, TextField } from "@mui/material";
 import { useMutation } from "@tanstack/react-query";
@@ -19,6 +20,7 @@ const useCreateWeapon = () => {
 
 function CreateWeaponForm() {
   const [open, setOpen] = useState(false);
+  const user = Cookies.get("userName");
   const {
     register,
     handleSubmit,
@@ -32,6 +34,7 @@ function CreateWeaponForm() {
       displayName: data.displayName,
       description: data.description,
       imageUrl: data.imageUrl,
+      createdBy: user,
     };
     createWeaponMutate(newWeapon, {
       onSuccess: () => {

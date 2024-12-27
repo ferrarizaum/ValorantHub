@@ -1,25 +1,21 @@
-import React, { useState, useEffect, useMemo } from "react";
+import React, { useState, useMemo } from "react";
 import Navbar from "../components/Navbar";
 import Card from "../components/Card";
 import Filter from "../components/Filter";
 import fetchAgents from "../api/Agents/fetchAgents";
 import { useLocation } from "react-router-dom";
 import CreateAgentForm from "../components/CreateAgentForm";
+import { useQuery } from "@tanstack/react-query";
 
 const AgentsPage = () => {
-  const [data, setData] = useState([]);
   const [filter, setFilter] = useState("");
   const location = useLocation();
   const type = location.pathname;
 
-  useEffect(() => {
-    const fetchData = async () => {
-      const data = await fetchAgents();
-      setData(data);
-    };
-
-    fetchData();
-  }, []);
+  const { data = [], isLoading } = useQuery({
+    queryKey: ["agents"],
+    queryFn: fetchAgents,
+  });
 
   const filteredData = useMemo(() => {
     return data.filter((item) =>
@@ -44,7 +40,18 @@ const AgentsPage = () => {
           <CreateAgentForm />
         </div>
       </div>
-      <Card data={filteredData} type={type} />
+      {isLoading ? (
+        <div
+          style={{
+            display: "flex",
+            justifyContent: "center",
+          }}
+        >
+          <h1>Loading...</h1>
+        </div>
+      ) : (
+        <Card data={filteredData} type={type} />
+      )}
     </>
   );
 };

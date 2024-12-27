@@ -1,15 +1,8 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import { useNavigate } from "react-router-dom";
 
 const Card = ({ data, type }) => {
   const navigate = useNavigate();
-  const [loading, setLoading] = useState(true);
-
-  useEffect(() => {
-    if (data.length > 0) {
-      setLoading(false);
-    }
-  }, [data]);
 
   return (
     <>
@@ -20,9 +13,7 @@ const Card = ({ data, type }) => {
           justifyContent: "center",
         }}
       >
-        {loading ? (
-          <h1>Loading...</h1> // Show this while the data is being fetched
-        ) : data.length > 0 ? (
+        {data.length > 0 ? (
           data.map((e) => (
             <div
               key={e.id}
@@ -52,7 +43,9 @@ const Card = ({ data, type }) => {
             </div>
           ))
         ) : (
-          <h1>Item not Found ;/</h1>
+          <div>
+            <h1>No Item Found ;/</h1>
+          </div>
         )}
       </div>
     </>

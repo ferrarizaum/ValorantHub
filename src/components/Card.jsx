@@ -3,7 +3,8 @@ import { useNavigate } from "react-router-dom";
 import { useMutation } from "@tanstack/react-query";
 import Cookies from "js-cookie";
 import deleteAgent from "../api/Agents/deleteAgent";
-/*
+import deleteWeapon from "../api/Weapons/deleteWeapon";
+
 const useDeleteWeaponCard = () => {
   return useMutation({
     mutationFn: deleteWeapon,
@@ -16,7 +17,7 @@ const useDeleteWeaponCard = () => {
     },
   });
 };
-*/
+
 const useDeleteAgentCard = () => {
   return useMutation({
     mutationFn: deleteAgent,
@@ -34,15 +35,20 @@ const Card = ({ data, type }) => {
   const navigate = useNavigate();
   const user = Cookies.get("userName");
 
-  console.log(user);
-  //const { mutate: deleteWeaponCardMutate } = useDeleteWeaponCard();
+  const { mutate: deleteWeaponCardMutate } = useDeleteWeaponCard();
   const { mutate: deleteAgentCardMutate } = useDeleteAgentCard();
 
   const onSubmit = (data) => {
     console.log(data);
-    deleteAgentCardMutate(data, {
-      onSuccess: () => {},
-    });
+    if (type === "agent") {
+      deleteAgentCardMutate(data, {
+        onSuccess: () => {},
+      });
+    } else {
+      deleteWeaponCardMutate(data, {
+        onSuccess: () => {},
+      });
+    }
   };
   return (
     <>

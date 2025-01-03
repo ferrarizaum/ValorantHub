@@ -2,7 +2,6 @@ import Cookies from "js-cookie";
 
 const deleteAgent = async (displayName) => {
   const token = Cookies.get("token");
-  console.log(displayName);
   try {
     const response = await fetch(
       `${process.env.REACT_APP_BACKEND_ADDRESS}/agents?displayName=${displayName}`,

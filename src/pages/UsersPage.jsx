@@ -14,7 +14,9 @@ const UsersPage = () => {
       <div>
         <h1>Users</h1>
         {data.map((e) => (
-          <h2>{e.userName}</h2>
+          <div>
+            <h2>{e.userName}</h2>
+          </div>
         ))}
       </div>
     </>

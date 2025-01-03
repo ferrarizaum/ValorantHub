@@ -11,6 +11,7 @@ import Home from "./pages/Home";
 import DetailsPage from "./pages/DetailsPage";
 import LoginPage from "./pages/LoginPage";
 import { useAuth } from "./components/context/AuthContext";
+import UsersPage from "./pages/UsersPage";
 
 const App = () => {
   const { isAuthenticated } = useAuth();
@@ -44,6 +45,7 @@ const App = () => {
         />
 
         <Route path="/login" element={<LoginPage />} />
+        <Route path="/users" element={<UsersPage />} />
       </Routes>
     </Router>
   );

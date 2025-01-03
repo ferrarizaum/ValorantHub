@@ -1,7 +1,7 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
-import Cookies from "js-cookie";
 import { useAuth } from "../components/context/AuthContext";
+import Cookies from "js-cookie";
 
 export const buttonStyle = {
   backgroundColor: "#000000",
@@ -21,6 +21,8 @@ export const buttonStyle = {
 const Navbar = () => {
   const navigate = useNavigate();
   const { logout } = useAuth();
+  const user = Cookies.get("userName");
+
   return (
     <>
       <div
@@ -62,6 +64,13 @@ const Navbar = () => {
                 Weapons
               </button>
             </li>
+            {user === "admin" && (
+              <li>
+                <button style={buttonStyle} onClick={() => navigate("/users")}>
+                  Users
+                </button>
+              </li>
+            )}
           </ul>
           <div style={{ display: "flex", alignItems: "center" }}>
             <div style={{ marginRight: "25px" }}>

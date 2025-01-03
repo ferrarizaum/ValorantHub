@@ -1,9 +1,49 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
+import { useMutation } from "@tanstack/react-query";
+import Cookies from "js-cookie";
+import deleteAgent from "../api/Agents/deleteAgent";
+/*
+const useDeleteWeaponCard = () => {
+  return useMutation({
+    mutationFn: deleteWeapon,
+    onSuccess: () => {
+      window.location.reload();
+      console.log("Weapon deleted successfully");
+    },
+    onError: (error) => {
+      console.error("Error deleting weapon:", error);
+    },
+  });
+};
+*/
+const useDeleteAgentCard = () => {
+  return useMutation({
+    mutationFn: deleteAgent,
+    onSuccess: () => {
+      window.location.reload();
+      console.log("Agent deleted successfully");
+    },
+    onError: (error) => {
+      console.error("Error deleting agent:", error);
+    },
+  });
+};
 
 const Card = ({ data, type }) => {
   const navigate = useNavigate();
+  const user = Cookies.get("userName");
 
+  console.log(user);
+  //const { mutate: deleteWeaponCardMutate } = useDeleteWeaponCard();
+  const { mutate: deleteAgentCardMutate } = useDeleteAgentCard();
+
+  const onSubmit = (data) => {
+    console.log(data);
+    deleteAgentCardMutate(data, {
+      onSuccess: () => {},
+    });
+  };
   return (
     <>
       <div
@@ -15,17 +55,17 @@ const Card = ({ data, type }) => {
       >
         {data.length > 0 ? (
           data.map((e) => (
-            <div
-              key={e.id}
-              style={{ textAlign: "center", margin: "2em" }}
-              onClick={() => navigate(`${type}/details/${e.id}`)}
-            >
+            <div key={e.id} style={{ textAlign: "center", margin: "2em" }}>
+              {user === "admin" && (
+                <div onClick={() => onSubmit(e.displayName)}>X</div>
+              )}
               <div
                 style={{
                   backgroundColor: "lightGray",
                   padding: "5px",
                   borderRadius: "5px",
                 }}
+                onClick={() => navigate(`${type}/details/${e.id}`)}
               >
                 <img
                   style={{

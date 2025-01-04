@@ -43,9 +43,14 @@ const App = () => {
             isAuthenticated ? <DetailsPage /> : <Navigate to="/login" replace />
           }
         />
+        <Route
+          path="/users"
+          element={
+            isAuthenticated ? <UsersPage /> : <Navigate to="/login" replace />
+          }
+        />
 
         <Route path="/login" element={<LoginPage />} />
-        <Route path="/users" element={<UsersPage />} />
       </Routes>
     </Router>
   );

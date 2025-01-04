@@ -107,9 +107,15 @@ const LogInPage = () => {
         open={snackbarOpen || isError}
         autoHideDuration={6000}
         onClose={handleSnackbarClose}
-        message={isSuccess ? "Logged in successfully!" : "Login failed"}
-        severity={isSuccess ? "success" : "error"}
-      />
+      >
+        <Alert
+          onClose={handleSnackbarClose}
+          severity={isSuccess ? "success" : "error"}
+          sx={{ width: "100%" }}
+        >
+          {isSuccess ? "Logged in successfully!" : "Login failed"}
+        </Alert>
+      </Snackbar>
     </div>
   );
 };

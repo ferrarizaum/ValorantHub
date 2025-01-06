@@ -22,7 +22,7 @@ const Home = () => {
         }}
       >
         <div style={{ marginTop: 20 }}>
-          <h1>Welcome to ValorantHub</h1>
+          <h1>Welcome to ValorantHub XD</h1>
         </div>
       </div>
     </>
